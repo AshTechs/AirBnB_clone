@@ -1,4 +1,3 @@
-```python
 #!/usr/bin/python3
 """
 Defines the HBnB console.
@@ -65,24 +64,46 @@ class HBNBCommand(cmd.Cmd):
         """
         Default behavior for cmd module when input is invalid.
         """
-        argdict = {
+        splited_line = arg.split(".")
+        err_message = f"*** Unknown synta: {arg}"
+
+        available_method = {
             "all": self.do_all,
             "show": self.do_show,
-            "destroy": self.do_destroy,
+            "update": self.do_update,
+            "create": self.do_create,
             "count": self.do_count,
-            "update": self.do_update
+            "destroy": self.do_destroy
         }
-        match = re.search(r"\.", arg)
-        if match is not None:
-            argl = [arg[:match.span()[0]], arg[match.span()[1]:]]
-            match = re.search(r"\((.*?)\)", argl[1])
-            if match is not None:
-                command = [argl[1][:match.span()[0]], match.group()[1:-1]]
-                if command[0] in argdict.keys():
-                    call = "{} {}".format(argl[0], command[1])
-                    return argdict[command[0]](call)
-        print("*** Unknown syntax: {}".format(arg))
-        return False
+        
+        if (len(splited_line) == 2):
+            class_name, method = splited_line
+            
+            method_name = method[0:method.index("(")] 
+            if method_name in available_method.keys():
+                params = method[method.index("(")+1:-1]
+                
+                # i choose 100 as a default number of replacment 
+                count_of_replacment = 100
+                
+                # check if the client pass a dict when he want to update
+                if "{" in params:
+                    count_of_replacment = 2
+                params = params.replace(",", "", count_of_replacment - 1)
+                params = params.replace("\"", "", count_of_replacment)
+                
+                if params:
+                    available_method[method_name](f"{class_name} {params}")
+                else:
+                    available_method[method_name](f"{class_name}")
+                    
+            else:
+                print(err_message)
+                return False
+        
+        else:
+            print(err_message)
+            return False
 
     def do_quit(self, arg):
         """
