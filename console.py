@@ -75,32 +75,32 @@ class HBNBCommand(cmd.Cmd):
             "count": self.do_count,
             "destroy": self.do_destroy
         }
-        
+
         if (len(splited_line) == 2):
             class_name, method = splited_line
-            
-            method_name = method[0:method.index("(")] 
+
+            method_name = method[0:method.index("(")]
             if method_name in available_method.keys():
                 params = method[method.index("(")+1:-1]
-                
-                # i choose 100 as a default number of replacment 
+
+                # i choose 100 as a default number of replacment
                 count_of_replacment = 100
-                
+
                 # check if the client pass a dict when he want to update
                 if "{" in params:
                     count_of_replacment = 2
                 params = params.replace(",", "", count_of_replacment - 1)
                 params = params.replace("\"", "", count_of_replacment)
-                
+
                 if params:
                     available_method[method_name](f"{class_name} {params}")
                 else:
                     available_method[method_name](f"{class_name}")
-                    
+
             else:
                 print(err_message)
                 return False
-        
+
         else:
             print(err_message)
             return False
