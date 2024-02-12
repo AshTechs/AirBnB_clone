@@ -87,7 +87,6 @@ class TestBaseModelInstantiation(unittest.TestCase):
         self.assertEqual(bm.updated_at, dt)
 
 
-
 class TestBaseModelToDict(unittest.TestCase):
     """Unittests for testing to_dict method of the BaseModel class."""
 
@@ -192,4 +191,3 @@ class TestBaseModelSave(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
