@@ -18,16 +18,25 @@ class FileStorage:
     __objects = {}
 
     def all(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
         return FileStorage.__objects
 
     def new(self, obj):
+        """_summary_
+
+        Args:
+            obj (_type_): _description_
+        """
         obj_dict = obj.to_dict()
         name = f"{obj_dict['__class__']}.{obj.id}"
         FileStorage.__objects[name] = obj
 
     def save(self):
-        """
-
+        """_summary_
         """
         all_objects = FileStorage.__objects
         dict_object = {}
