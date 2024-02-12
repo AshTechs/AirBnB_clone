@@ -7,4 +7,3 @@ storage = FileStorage()
 
 # Reload data from file
 storage.reload()
-

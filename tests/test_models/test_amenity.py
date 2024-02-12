@@ -157,7 +157,6 @@ if __name__ == "__main__":
     unittest.main()
 
 
-
 class TestAmenitySave(unittest.TestCase):
     """Unittests for testing save method of the Amenity class."""
 
@@ -213,4 +212,3 @@ class TestAmenitySave(unittest.TestCase):
         amid = "Amenity." + am.id
         with open("file.json", "r") as f:
             self.assertIn(amid, f.read())
-

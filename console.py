@@ -24,15 +24,15 @@ def parse(arg):
     brackets = re.search(r"\[(.*?)\]", arg)
     if curly_braces is None:
         if brackets is None:
-            return [i.strip(",") for i in split(arg)]
+            return [x.strip(",") for x in split(arg)]
         else:
             lexer = split(arg[:brackets.span()[0]])
-            retl = [i.strip(",") for i in lexer]
+            retl = [x.strip(",") for x in lexer]
             retl.append(brackets.group())
             return retl
     else:
         lexer = split(arg[:curly_braces.span()[0]])
-        retl = [i.strip(",") for i in lexer]
+        retl = [x.strip(",") for x in lexer]
         retl.append(curly_braces.group())
         return retl
 
@@ -127,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
         if len(argl) == 0:
             print("** class name missing **")
         elif argl[0] not in HBNBCommand.__classes:
-            print("** class doesn't exist **")
+            print("** Class doesn't exist **")
         else:
             print(eval(argl[0])().id)
             storage.save()
@@ -241,13 +241,13 @@ class HBNBCommand(cmd.Cmd):
                 obj.__dict__[argl[2]] = argl[3]
         elif type(eval(argl[2])) == dict:
             obj = objdict["{}.{}".format(argl[0], argl[1])]
-            for key, value in eval(argl[2]).items():
-                if (key in obj.__class__.__dict__.keys() and
-                        type(obj.__class__.__dict__[key]) in {str, int, float}):
-                    valtype = type(obj.__class__.__dict__[key])
-                    obj.__dict__[key] = valtype(value)
+            for k, value in eval(argl[2]).items():
+                if (k in obj.__class__.__dict__.keys() and
+                        type(obj.__class__.__dict__[k]) in {str, int, float}):
+                    valtype = type(obj.__class__.__dict__[k])
+                    obj.__dict__[k] = valtype(value)
                 else:
-                    obj.__dict__[key] = value
+                    obj.__dict__[k] = value
         storage.save()
 
 

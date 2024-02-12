@@ -72,7 +72,15 @@ class TestFileStorageMethods(unittest.TestCase):
             models.storage.all(None)
 
     def test_new(self):
-        instances = [BaseModel(), User(), State(), Place(), City(), Amenity(), Review()]
+        instances = [
+                BaseModel(),
+                User(),
+                State(),
+                Place(),
+                City(),
+                Amenity(),
+                Review()
+        ]
         for instance in instances:
             models.storage.new(instance)
             key = "{}.{}".format(instance.__class__.__name__, instance.id)
@@ -83,7 +91,15 @@ class TestFileStorageMethods(unittest.TestCase):
             models.storage.new(BaseModel(), 1)
 
     def test_save(self):
-        instances = [BaseModel(), User(), State(), Place(), City(), Amenity(), Review()]
+        instances = [
+                BaseModel(),
+                User(),
+                State(),
+                Place(),
+                City(),
+                Amenity(),
+                Review()
+        ]
         for instance in instances:
             models.storage.new(instance)
         models.storage.save()
@@ -98,7 +114,15 @@ class TestFileStorageMethods(unittest.TestCase):
             models.storage.save(None)
 
     def test_reload(self):
-        instances = [BaseModel(), User(), State(), Place(), City(), Amenity(), Review()]
+        instances = [
+                BaseModel(),
+                User(),
+                State(),
+                Place(),
+                City(),
+                Amenity(),
+                Review()
+        ]
         for instance in instances:
             models.storage.new(instance)
         models.storage.save()
@@ -114,4 +138,3 @@ class TestFileStorageMethods(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
