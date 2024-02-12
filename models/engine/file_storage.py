@@ -14,6 +14,9 @@ from models.place import Place
 
 
 class FileStorage:
+    """class that serializes instances to a JSON
+    file and deserializes JSON file to instances
+    """
     __file_path = "file.json"
     __objects = {}
 
