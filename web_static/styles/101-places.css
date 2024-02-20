@@ -82,15 +82,15 @@
 /**************************/
 
 .max_guest {
-  background-image: url(../images/icon_group.png);
+  background-image: url("web_static/images/icon_group.png");
 }
 
 .number_rooms {
-  background-image: url(../images/icon_bed.png);
+  background-image: url("web_static/images/icon_bed.png");
 }
 
 .number_bathrooms {
-  background-image: url(../images/icon_bath.png)
+  background-image: url("web_static/images/icon_bath.png")
 }
 
 .max_guest,
@@ -150,15 +150,15 @@
 }
 
 .places_amenities_pet_friendly {
-  background-image: url(../images/icon_pets.png);
+  background-image: url("web_static/images/icon_pets.png");
 }
 
 .places_amenities_tv {
-  background-image: url(../images/icon_tv.png);
+  background-image: url("web_static/images/icon_tv.png");
 }
 
 .places_amenities_wifi {
-  background-image: url(../images/icon_wifi.png);
+  background-image: url("web_static/images/icon_wifi.png");
 }
 
 .places_amenities_pet_friendly,
